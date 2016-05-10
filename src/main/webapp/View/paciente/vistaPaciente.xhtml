@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xml:lang="en" lang="en"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+
+<h:body>
+    <ui:composition template="./../../templates/layout.xhtml">
+        <ui:define name="content">
+            <f:view>
+                <f:metadata>
+                    <f:viewAction action="#{viewPacienteBean.init}" onPostback="false"/>
+                </f:metadata>
+            </f:view>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="btn-group pull-right">
+                        <a class="btn btn-default" jsf:outcome="/View/paciente/crearPaciente.xhtml" ><i class="fa fa-male"></i> Nuevo Paciente</a>
+                    </div>
+                    <h1>Pacientes</h1>
+                    <br/>
+<p:dataTable var ="pac" value="#{viewPacienteBean.pacientes}" id="tpaciente" styleClass="table table-striped">
+
+<p:column headerText="Nombre completo">
+<h:outputText value="#{pac.name} #{pac.lastname}"/>
+</p:column>
+
+    <p:column headerText="Direccion">
+<h:outputText value="#{pac.address}"/>
+    </p:column>
+
+    <p:column headerText="Email">
+<h:outputText value="#{pac.email}"/>
+    </p:column>
+
+    <p:column headerText="Telefono">
+<h:outputText value="#{pac.phone}"/>
+    </p:column>
+
+
+    <p:column headerText="">
+
+        <h:link value="Historial" styleClass="btn btn-default btn-xs" title="#{pac.name} #{pac.lastname}"
+                outcome="/View/citas/vistaCita.xhtml">
+            <f:param name="id" value="#{pac.id}"/>
+            <f:param name="opcion" value="#{'pacient'}"/>
+        </h:link>
+        <p:spacer width="20"/>
+<h:link value="Editar" styleClass="btn btn-warning btn-xs" title="#{pac.name} #{pac.lastname}"
+        outcome="/View/paciente/crearPaciente.xhtml">
+    <f:param name="id" value="#{pac.id}" ></f:param>
+</h:link>
+
+    </p:column>
+</p:dataTable>
+
+
+                </div></div>
+
+
+        </ui:define>
+    </ui:composition>
+</h:body>
+</html>

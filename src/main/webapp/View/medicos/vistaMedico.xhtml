@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xml:lang="en" lang="en"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:jsf="http://xmlns.jcp.org/jsf">
+<head>
+    <title>Title</title>
+</head>
+<h:body>
+    <h1>Medicos</h1>
+    <ui:composition template="./../../templates/layout.xhtml">
+        <ui:define name="content">
+            <f:view>
+                <f:metadata>
+                    <f:viewAction action="#{viewMedicoBean.init}" onPostback="false"/>
+                </f:metadata>
+            </f:view>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="btn-group pull-right">
+
+                        <a jsf:outcome="/View/medicos/actionMedico.xhtml" class="btn btn-default"><i
+                                class="fa fa-support"></i> Nuevo Medico</a>
+                    </div>
+                    <h1>Medicos</h1>
+                    <br/>
+                    <p:dataTable var="pac" value="#{viewMedicoBean.especialidadMedica}" id="tpaciente"
+                                 styleClass="table table-striped"
+                                 rows="10"
+                                 paginator="true" paginatorPosition="button"
+                                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                 rowsPerPageTemplate="5,10,15">
+
+                        <p:column headerText="Nombre completo">
+                            <h:outputText value="#{pac[0]} #{pac[1]}"/>
+                        </p:column>
+
+                        <p:column headerText="Direccion">
+                            <h:outputText value="#{pac[2]}"/>
+                        </p:column>
+
+                        <p:column headerText="Email">
+                            <h:outputText value="#{pac[3]}"/>
+                        </p:column>
+
+                        <p:column headerText="Telefono">
+                            <h:outputText value="#{pac[4]}"/>
+                        </p:column>
+                        <p:column headerText="Especialidad">
+                            <h:outputText value="#{pac[5]}"/>
+                        </p:column>
+
+
+                        <p:column headerText="">
+
+                            <h:link value="Historial" styleClass="btn btn-default btn-xs" title="#{pac[0]} #{pac[1]}"
+                                   outcome="/View/citas/vistaCita.xhtml">
+                                <f:param name="id" value="#{pac[6]}"/>
+                                <f:param name="opcion" value="#{'medic'}"/>
+                            </h:link>
+                            <p:spacer width="20"/>
+                            <h:link value="Editar" styleClass="btn btn-warning btn-xs" title="#{pac[0]} #{pac[1]}"
+                                    outcome="/View/medicos/actionMedico.xhtml">
+                                <f:param name="id" value="#{pac[6]}"></f:param>
+                            </h:link>
+
+                        </p:column>
+                    </p:dataTable>
+
+                    <!--<p:dataTable var ="med" value="#{viewMedicoBean.especialidadMedica}"-->
+                    <!--id="tpaciente2" styleClass="table table-striped">-->
+                    <!--<p:column headerText="Nombre completo">-->
+                    <!--<h:outputText value="#{med[0]}"/>-->
+                    <!--</p:column>-->
+
+                    <!--<p:column headerText="Especialidad">-->
+                    <!--<h:outputText value="#{med[1]}"/>-->
+                    <!--</p:column>-->
+                    <!--</p:dataTable>-->
+
+                </div>
+            </div>
+        </ui:define>
+    </ui:composition>
+</h:body>
+</html>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xml:lang="en" lang="en"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+<h:body>
+    <ui:composition template="./../../templates/layout.xhtml">
+        <ui:define name="content">
+            <f:view>
+                <f:metadata>
+                    <f:viewAction action="#{viewModuloBean.init}" onPostback=""/>
+                </f:metadata>
+            </f:view>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="btn-group pull-right">
+
+                        <a class="btn btn-default" jsf:outcome="/View/modulo/actionModulo.xhtml"><i class="fa fa-th-list"></i> Nueva Categoria</a>
+
+                    </div>
+                    <h1>Categorias</h1>
+                    <br/>
+<h:dataTable value="#{viewModuloBean.modulos}" var="moc" styleClass="table table-bordered table-hover">
+    <h:column>
+        <f:facet name="header">
+            <h:outputText value="Nombre"></h:outputText>
+        </f:facet>
+        <h:outputText value="#{moc.name}" style="-fx-arc-width: 95%"></h:outputText>
+    </h:column>
+    <h:column>
+        <f:facet name="header">
+
+        </f:facet>
+    <h:link value="Editar" styleClass="btn btn-warning btn-xs" title="#{moc.name}"
+    outcome="/View/modulo/actionModulo.xhtml">
+<f:param name="id" value="#{moc.id}"></f:param>
+    </h:link>
+    </h:column>
+
+</h:dataTable>
+
+
+                </div></div>
+
+        </ui:define>
+    </ui:composition>
+
+</h:body>
+</html>

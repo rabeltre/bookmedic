@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xml:lang="en" lang="en"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+<head>
+    <title>Title</title>
+</head>
+<h:body>
+    <ui:composition template="./../../templates/layout.xhtml">
+      <ui:define name="content">
+          <f:view>
+              <f:metadata>
+                  <f:viewAction action="#{actionPacienteBean.init}" onPostback="false"/>
+                  <f:viewParam id="id" name="id" value="#{actionPacienteBean.id}"/>
+              </f:metadata>
+          </f:view>
+          <div class="row">
+              <div class="col-md-12">
+                  <h1>Nuevo Paciente</h1>
+                  <br/>
+                  <h:form class="form-horizontal"  id ="formGeneral" role="form">
+
+
+                      <div class="form-group">
+                          <div class="row">
+                          <label for="name" style="text-align:right;" class="col-lg-2 control-label">Nombre*</label>
+                          <div class="col-md-6">
+                              <h:inputText a:type="text" name="name" value="#{actionPacienteBean.paciente.name}"
+                                           a:class="form-control" id="name" a:required="required" a:placeholder="Nombre"/>
+
+                          </div>
+                      </div>
+                      </div>
+                      <div class="form-group">
+                      <div class="row">
+                          <label for="lastname" style="text-align:right;" class="col-lg-2 control-label">Apellido*</label>
+                          <div class="col-md-6">
+                              <h:inputText a:type="text" name="lastname" value="#{actionPacienteBean.paciente.lastname}"
+                                           a:class="form-control" id="lastname"  a:placeholder="Apellido" a:required="required"/>
+                          </div>
+                          </div>
+                      </div>
+                      <div class="form-group">
+                      <div class="row">
+                          <label for="inputEmail1" style="text-align:right;" class="col-lg-2 control-label">Genero*</label>
+                          <div class="col-md-6">
+                              <!--<label class="checkbox-inline">-->
+                                  <!--<input type="radio" id="inlineCheckbox1"  name="gender" value="h"/> Hombre-->
+                              <!--</label>-->
+                              <!--<label class="checkbox-inline">-->
+                                  <!--<input type="radio" id="inlineCheckbox2" name="gender" value="m"/> Mujer-->
+                              <!--</label>-->
+                              <h:selectOneRadio value="#{actionPacienteBean.paciente.gender}"  a:required="required" styleClass="checkbox-inline">
+                                  <f:selectItem itemLabel="Masculino " itemValue="M" />
+                                  <f:selectItem itemLabel="Femenino" itemValue="F"/>
+                              </h:selectOneRadio>
+
+                          </div>
+                          </div>
+                      </div>
+
+                      <div class="form-group">
+                      <div class="row">
+                          <label for="day_of_birth" style="text-align:right;" class="col-lg-2 control-label">Fecha de Nacimiento*</label>
+                          <div class="col-md-6">
+                              <p:calendar id="day_of_birth"  placeholder="Fecha de nacimiento" a:required="required"
+                                          navigator="true" pattern="dd/MM/yyyy"  value="#{actionPacienteBean.paciente.dayOfBirth}"/>
+                              <!--<h:inputText a:type="date" name="day_of_birth" a:class="form-control" a:required="required"-->
+                                           <!--id="day_of_birth" a:placeholder="Fecha de Nacimiento" value="#{actionPacienteBean.paciente.dayOfBirth}"/>-->
+
+                          </div>
+                      </div>
+                      </div>
+
+
+                      <div class="form-group">
+                      <div class="row">
+                          <label for="address1" style="text-align:right;" class="col-lg-2 control-label">Direccion*</label>
+                          <div class="col-md-6">
+                              <h:inputText a:type="text" name="address" value="#{actionPacienteBean.paciente.address}"
+                                     a:class="form-control" id="address1" a:required="required" a:placeholder="Direccion"/>
+                          </div>
+                      </div>
+                      </div>
+                      <div class="form-group">
+                      <div class="row">
+                          <label for="email1" style="text-align:right;" class="col-lg-2 control-label">Email</label>
+                          <div class="col-md-6">
+                              <h:inputText a:type="email" name="email" value="#{actionPacienteBean.paciente.email}"
+                                     a:class="form-control" id="email1" a:placeholder="Email"/>
+                          </div>
+                      </div>
+</div>
+                      <div class="form-group">
+                      <div class="row">
+                          <label for="phone" style="text-align:right;" class="col-lg-2 control-label">Telefono*</label>
+                          <div class="col-md-6">
+                              <h:inputText a:type="text" name="phone" value="#{actionPacienteBean.paciente.phone}"
+                                     a:class="form-control" id="phone" a:placeholder="Telefono" a:required="required"/>
+                          </div>
+                          </div>
+                      </div>
+                      <div class="form-group">
+                      <div class="row">
+                          <label for="sick" style="text-align:right;" class="col-lg-2 control-label">Enfermedad</label>
+                          <div class="col-md-6">
+                              <h:inputTextarea name="sick" value="#{actionPacienteBean.paciente.sick}"
+                                        a:class="form-control" id="sick" a:placeholder="Enfermedad"/>
+                          </div></div>
+                      </div>
+                      <div class="form-group">
+                      <div class="row">
+                          <label for="medicaments" style="text-align:right;" class="col-lg-2 control-label">Medicamentos</label>
+                          <div class="col-md-6">
+                              <h:inputTextarea name="medicaments" value="#{actionPacienteBean.paciente.medicaments}"
+                                        a:class="form-control" id="medicaments" a:placeholder="Medicamentos"/>
+                          </div>
+                          </div>
+                      </div>
+                      <div class="form-group">
+                      <div class="row">
+                          <label for="alergy" style="text-align:right;" class="col-lg-2 control-label">Alergia</label>
+                          <div class="col-md-6">
+                              <h:inputTextarea name="alergy" value="#{actionPacienteBean.paciente.alergy}"
+                                        a:class="form-control" id="alergy" a:placeholder="Alergia"/>
+                          </div></div>
+                      </div>
+                      <div class="row">
+                      <p class="alert alert-info">* Campos obligatorios</p></div>
+
+                      <div class="form-group">
+                      <div class="row">
+                          <div class="col-lg-offset-2 col-lg-10">
+<!--
+                              <button type="submit" class="btn btn-primary">Agregar Paciente</button>
+-->
+                              <h:commandButton styleClass="btn btn-primary btn-lg" action="#{actionPacienteBean.onPersist}"
+                                             value="Guardar"/>
+
+                              <p:spacer width="25"/>
+                              <p:link styleClass="btn btn-danger btn-lg" value="Cancelar" outcome="/View/paciente/vistaPaciente.xhtml" >
+
+                              </p:link>
+
+                          </div>
+                      </div>
+                      </div>
+
+                  </h:form>
+
+              </div>
+          </div>
+      </ui:define>
+  </ui:composition>
+</h:body>
+</html>

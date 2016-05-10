@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 30, 2016 9:11:25 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.Reservation" table="reservation" catalog="bookmedik" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="medic" class="model.Medic" fetch="select">
+            <column name="medic_id" />
+        </many-to-one>
+        <many-to-one name="pacient" class="model.Pacient" fetch="select">
+            <column name="pacient_id" />
+        </many-to-one>
+        <many-to-one name="payment" class="model.Payment" fetch="select">
+            <column name="payment_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="status" class="model.Status" fetch="select">
+            <column name="status_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="user" class="model.User" fetch="select">
+            <column name="user_id" />
+        </many-to-one>
+        <property name="title" type="string">
+            <column name="title" length="100" />
+        </property>
+        <property name="note" type="string">
+            <column name="note" length="65535" />
+        </property>
+        <property name="message" type="string">
+            <column name="message" length="65535" />
+        </property>
+        <property name="dateAt" type="date">
+            <column name="date_at" length="10" />
+        </property>
+        <property name="timeAt" type="time">
+            <column name="time_at" length="6" />
+        </property>
+        <property name="createdAt" type="timestamp">
+            <column name="created_at" length="19" />
+        </property>
+        <property name="symtoms" type="string">
+            <column name="symtoms" length="65535" />
+        </property>
+        <property name="sick" type="string">
+            <column name="sick" length="65535" />
+        </property>
+        <property name="medicaments" type="string">
+            <column name="medicaments" length="65535" />
+        </property>
+        <property name="price" type="java.lang.Double">
+            <column name="price" precision="22" scale="0" />
+        </property>
+        <property name="isWeb" type="boolean">
+            <column name="is_web" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

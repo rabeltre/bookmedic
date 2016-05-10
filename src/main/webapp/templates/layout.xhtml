@@ -1,0 +1,109 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:jsf="http://xmlns.jcp.org/jsf">
+
+<h:head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <link rel="stylesheet" href="/resources/bootstrap/3.3.6/css/bootstrap.min.css"/>
+
+    <link rel="stylesheet" href="/resources/bootstrap/dashboard.css"/>
+    <link rel="stylesheet" href="/resources/css/cssLayout.css"/>
+    <link rel="stylesheet" href="/resources/font-awesome-4.5.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="/resources/css/cssLayout.css"/>
+    <title>Sistema Prueba</title>
+</h:head>
+
+<h:body>
+
+<div id="wrapper">
+
+    <!-- Sidebar -->
+    <nav role="navigation" class="navbar navbar-inverse navbar-fixed-top">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button data-target=".navbar-ex1-collapse" data-toggle="collapse" class="navbar-toggle" type="button">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="./" class="navbar-brand">Book <sup><small><span class="label label-info">v2.0</span></small></sup> </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                <li><a jsf:outcome="/View/citas/actionCitas.xhtml"><i class="fa fa-asterisk"></i> Nueva Cita</a></li>
+            </ul>
+            <ul class="nav navbar-nav side-nav">
+                <li><a jsf:outcome="/View/index.xhtml"><i class="fa fa-home"></i> Inicio</a></li>
+                <li><a jsf:outcome="/View/citas/vistaCita.xhtml"><i class="fa fa-calendar"></i> Citas</a></li>
+                <li><a jsf:outcome="/View/paciente/vistaPaciente.xhtml"><i class="fa fa-male"></i> Pacientes</a></li>
+                <li><a jsf:outcome="/View/medicos/vistaMedico"><i class="fa fa-support"></i> Medicos</a></li>
+                <li><a jsf:outcome="/View/modulo/vistaModulo.xhtml"><i class="fa fa-th-list"></i> Areas Medicas</a></li>
+                <li><a href="index.php?view=reports"><i class="fa fa-area-chart"></i> Reportes</a></li>
+                <li><a href="index.php?view=changelog"><i class="fa fa-filter"></i> Log de cambios </a></li>
+                <li><a href="index.php?view=users"><i class="fa fa-users"></i> Usuarios </a></li>
+            </ul>
+
+
+
+
+
+
+            <ul class="nav navbar-nav navbar-right navbar-user">
+                <li class="dropdown user-dropdown">
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                        <b>EVILNAPSIS </b><b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="http://evilnapsis.com/">Ver sitio</a></li>
+                        <li><a href="http://evilnapsis.com/store/">Tienda</a></li>
+                        <li><a href="http://evilnapsis.com/product/bookmedik-pro/">BookMedik PRO</a></li>
+                    </ul>
+                </li>
+                <!--<li class="dropdown user-dropdown">-->
+                    <!--<a data-toggle="dropdown" class="dropdown-toggle" href="#">-->
+                        <!--<b class="caret"></b>-->
+                    <!--</a>-->
+                    <!--<ul class="dropdown-menu">-->
+                        <!--<li><a href="index.php?view=configuration">Configuracion</a></li>-->
+                        <!--<li><a href="logout.php">Salir</a></li>-->
+                    <!--</ul>-->
+                <!--</li>-->
+            </ul>
+
+
+
+        </div><!-- /.navbar-collapse -->
+    </nav>
+
+    <div id="page-wrapper">
+
+        <div class="row">
+            <div class="col-md-12">
+                <ui:insert name="content"></ui:insert>
+            </div>
+        </div>
+
+
+
+    </div><!-- /#page-wrapper -->
+
+</div><!-- /#wrapper -->
+
+<!-- JavaScript -->
+
+
+
+    <script type="application/javascript" src="/resources/bootstrap/3.3.6/js/bootstrap.min.js"/>
+
+</h:body>
+
+</html>

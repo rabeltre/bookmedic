@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xml:lang="en" lang="en"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+<head>
+    <title>Title</title>
+</head>
+<h:body>
+    <ui:composition template="./../../templates/layout.xhtml">
+        <ui:define name="content">
+            <f:view>
+                <f:metadata>
+                    <f:viewAction action="#{actionCitaBean.init}" onPostback="false"/>
+                </f:metadata>
+            </f:view>
+
+            <div class="row">
+                <div class="col-md-10">
+                    <h1>Nueva Cita</h1>
+                    <h:form  role="form" class="form-horizontal">
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label" for="inputEmail1">Asunto</label>
+                            <div class="col-lg-10">
+                                <h:inputText a:type="text"  value="#{actionCitaBean.citas.title}"
+                                             a:placeholder="Asunto" styleClass="form-control" a:required="" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label" for="inputEmail1">Paciente</label>
+                            <div class="col-lg-10">
+                                <h:selectOneMenu  value="#{actionCitaBean.selectedItemPaciente}"  a:required="required"
+                                                  styleClass="form-control">
+                                    <f:selectItem itemLabel=""/>
+                                    <f:selectItems value="#{actionCitaBean.listaDePacientes}"/>
+                                </h:selectOneMenu>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label" for="inputEmail1">Medico</label>
+                            <div class="col-lg-10">
+                                <h:selectOneMenu  value="#{actionCitaBean.selectedItemMedico}"  a:required="required"
+                                                  styleClass="form-control">
+                                    <f:selectItem itemLabel=""/>
+                                    <f:selectItems value="#{actionCitaBean.listaDeMedicos}"/>
+                                </h:selectOneMenu>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label" for="inputEmail1">Fecha/Hora</label>
+                            <div class="col-lg-5">
+                                <!--<input type="date" placeholder="Fecha" id="inputEmail1" class="form-control" required="" name="date_at"/>-->
+                                <p:calendar id="date"  placeholder="Fecha"
+                                            a:required="required" value="#{actionCitaBean.citas.dateAt}"
+                                            navigator="true" pattern="dd/MM/yyyy"/>
+                            </div>
+                            <div class="col-lg-5">
+                                <!--<input type="time" placeholder="Hora" id="inputEmail1" class="form-control" required="" name="time_at"/>-->
+                                <p:calendar  placeholder="Hora" a:required="required"
+                                            pattern="HH:mm" timeOnly="true" value="#{actionCitaBean.citas.timeAt}"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label" for="inputEmail1">Nota</label>
+                            <div class="col-lg-10">
+                                <h:inputTextarea a:placeholder="Nota"  value="#{actionCitaBean.citas.note}"
+                                                 styleClass="form-control"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label" for="inputEmail1">Enfermedad</label>
+                            <div class="col-lg-10">
+                                <h:inputTextarea value="#{actionCitaBean.citas.sick}"
+                                        a:placeholder="Enfermedad"  styleClass="form-control"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label" for="inputEmail1">Sintomas</label>
+                            <div class="col-lg-10">
+                                <h:inputTextarea value="#{actionCitaBean.citas.symtoms}"
+                                        a:placeholder="Sintomas"  styleClass="form-control"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label" for="inputEmail1">Medicamentos</label>
+                            <div class="col-lg-10">
+                                <h:inputTextarea value="#{actionCitaBean.citas.medicaments}"
+                                        a:placeholder="Medicamentos"  styleClass="form-control"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label" for="inputEmail1">Estado de la cita</label>
+                            <div class="col-lg-10">
+                                <!--<select required="" class="form-control" name="status_id">-->
+                                    <!--<option value="1">Pendiente</option>-->
+                                    <!--<option value="2">Aplicada</option>-->
+                                    <!--<option value="3">No asistio</option>-->
+                                    <!--<option value="4">Cancelada</option>-->
+                                <!--</select>-->
+
+                                <h:selectOneMenu  value="#{actionCitaBean.selectedItemStatus}"
+                                                  styleClass="form-control">
+                                    <f:selectItems value="#{actionCitaBean.listaDeStatus}"/>
+                                </h:selectOneMenu>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label" for="inputEmail1">Estado del pago</label>
+                            <div class="col-lg-10">
+                                <h:selectOneMenu  value="#{actionCitaBean.selectedItemPayment}"
+                                                  styleClass="form-control">
+                                    <f:selectItems value="#{actionCitaBean.listaDePagos}"/>
+                                </h:selectOneMenu>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label" for="inputEmail1">Costo</label>
+                            <div class="col-lg-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-usd"></i></span>
+                                    <h:inputText a:type="number" value="#{actionCitaBean.citas.price}"
+                                                 a:required="required" a:min="0" a:placeholder="Costo" styleClass="form-control"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-offset-2 col-lg-10">
+
+                                <h:commandButton styleClass="btn btn-primary btn-lg"
+                                                 action="#{actionCitaBean.onPersist}"
+                                                 value="Agregar Cita"/>
+
+                                <p:spacer width="25"/>
+                                <p:link styleClass="btn btn-danger btn-lg" value="Cancelar" outcome="/View/index.xhtml" >
+
+                                </p:link>
+                            </div>
+                        </div>
+                    </h:form>
+
+                </div>
+            </div>
+
+
+        </ui:define>
+    </ui:composition>
+</h:body>
+</html>

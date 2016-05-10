@@ -1,0 +1,100 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+
+
+    <title>Facelet Title</title>
+</h:head>
+<h:body>
+
+
+    <ui:composition template="./../templates/layout.xhtml">
+        <ui:define name="content">
+            <div class="center-block">
+                <h1>Bienvenido al sistema!</h1></div>
+
+
+            <h:form>
+                <h:selectOneMenu value="#{bean.selectedItem}" >
+                    <f:selectItem itemValue="#{null}" itemLabel="-- select one --"/>
+                    <f:selectItem itemValue="foo" itemLabel="Foo label"/>
+                    <f:selectItem itemValue="bar" itemLabel="Bar label"/>
+                    <f:selectItem itemValue="baz" itemLabel="Baz label"/>
+                </h:selectOneMenu>
+                <h:commandButton value="Submit" action="#{bean.submit}"/>
+
+
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+
+                <h:selectOneMenu value="#{bean.selectedItem}">
+                    <f:selectItem itemValue="#{null}" itemLabel="-- select one --" />
+                    <f:selectItems value="#{bean.availableItems}" />
+                </h:selectOneMenu>
+                <h:commandButton value="Submit" action="#{bean.submit}" />
+
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+
+                <h:selectOneMenu value="#{bean.selectedItem}">
+                    <f:selectItem itemValue="#{null}" itemLabel="-- select one --" />
+                    <f:selectItems value="#{bean.availableItems2}" />
+                </h:selectOneMenu>
+                <h:commandButton value="Submit" action="#{bean.submit}" />
+
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+
+                <h:selectOneMenu value="#{bean.selectedItem}">
+                    <f:selectItem itemValue="#{null}" itemLabel="-- select one --" />
+                    <f:selectItems value="#{bean.availableItemMap}"/>
+                </h:selectOneMenu>
+                <h:commandButton value="Submit" action="#{bean.submit}" />
+
+
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+
+                <h:selectOneMenu value="#{bean.stars}">
+                    <f:selectItem itemValue="#{null}" itemLabel="-- select one --" />
+                    <f:selectItems value="#{bean.starRatingList}"/>
+                </h:selectOneMenu>
+                <h:commandButton value="Submit" action="#{bean.submit}" />
+
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+
+                <h:selectOneMenu value="#{beannPrueba.selectedItem}">
+                    <f:selectItem itemValue="#{null}" itemLabel="-- select one --" />
+                    <f:selectItems value="#{beannPrueba.medicosLista}"/>
+                </h:selectOneMenu>
+                <h:commandButton value="Submit" action="#{beannPrueba.submit}" />
+
+
+
+
+
+            </h:form>
+
+
+
+
+        </ui:define>
+    </ui:composition>
+</h:body>
+</html>
